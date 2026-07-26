@@ -34,7 +34,7 @@ function showFolders(folders){
             if (folder.name === "Crackships" || folder.name === "crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
                 // Mets ton mot de passe ici entre les guillemets
-                if (password !== "ton_mot_de_passe") {
+                if (password !== "swifties") {
                     alert("Mot de passe incorrect !");
                     return;
                 }
