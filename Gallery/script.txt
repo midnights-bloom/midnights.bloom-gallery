@@ -2,10 +2,10 @@ const USER = "midnights-bloom";
 const REPO = "midnights.bloom-gallery";
 const ROOT = "Assets";
  
-const gallery=document.getElementById("gallery");
-const back=document.getElementById("back");
+const gallery = document.getElementById("gallery");
+const back = document.getElementById("back");
 
-let currentPath=ROOT;
+let currentPath = ROOT;
 let history = [];
 
 let currentImages = [];
@@ -16,24 +16,23 @@ const breadcrumb = document.getElementById("breadcrumb");
 
 // récupérer le contenu d'un dossier github
 async function getFolder(path){
-    const url=`https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
-    const res=await fetch(url);
+    const url = `https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
+    const res = await fetch(url);
     return await res.json();
 } 
 
 function showFolders(folders){
+    folders.forEach(folder => {
+        const card = document.createElement("div");
+        card.className = "folder";
+        card.innerHTML = `
+        <img class="folder-icon" src="./Pngs/folder.png" alt="folder">
+        <div class="name">${folder.name}</div>
+    `;
 
-    folders.forEach(folder=>{
-        const card=document.createElement("div");
-        card.className="folder";
-        card.innerHTML=`
-		<img class="folder-icon" src="./png/folder.png" alt="folder">
-		<div class="name">${folder.name}</div>
-	`;
-
-        card.onclick=()=>{
+        card.onclick = () => {
             history.push(currentPath);
-            currentPath=folder.path;
+            currentPath = folder.path;
             loadFolder(currentPath);
         };
 
@@ -42,30 +41,28 @@ function showFolders(folders){
 }
 
 function showImages(images){
-
-    images.forEach(image=>{
-        const card=document.createElement("div");
-        card.className="icon";
-        card.innerHTML=`
+    images.forEach(image => {
+        const card = document.createElement("div");
+        card.className = "icon";
+        card.innerHTML = `
             <img src="${image.download_url}" alt="">
             <button class="copy" title="Copier l'URL">⧉</button>
         `;
-        const button=card.querySelector(".copy");
-
+        const button = card.querySelector(".copy");
         const img = card.querySelector("img");
 
-        img.onclick = ()=>{
+        img.onclick = () => {
             currentImageIndex = images.indexOf(image);
             openPreview();
         };
 
-        button.onclick=(e)=>{
+        button.onclick = (e) => {
             e.stopPropagation();
             navigator.clipboard.writeText(image.download_url);
-            button.textContent="✓";
-            setTimeout(()=>{
-                button.textContent="⧉";
-            },1000);
+            button.textContent = "✓";
+            setTimeout(() => {
+                button.textContent = "⧉";
+            }, 1000);
         };
         gallery.appendChild(card);
     });
@@ -103,7 +100,7 @@ async function loadFolder(path){
 }
 
 // back to homepage
-back.onclick = ()=>{
+back.onclick = () => {
     if (history.length > 0) {
         currentPath = history.pop();
         loadFolder(currentPath);
@@ -114,7 +111,6 @@ back.onclick = ()=>{
 };
 
 // ajoute le preview
-
 const preview = document.getElementById("preview");
 const previewImage = document.getElementById("previewImage");
 
@@ -136,7 +132,6 @@ function hidePreview(){
     preview.classList.remove("show");
     preview.classList.add("hide");
 
-    // pour l'animation
     setTimeout(() => {
         preview.classList.add("hidden");
         preview.classList.remove("hide");
@@ -187,7 +182,6 @@ function updateBreadcrumb(path){
 
     breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
 }
-
 
 // lance la galerie
 loadFolder(ROOT);
