@@ -126,9 +126,9 @@ h1 {
 
 /* Traitement spécifique uniquement pour les GIFs dans la grille */
 .icon img.gif-img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
+    width: 160px !important;
+    height: 160px !important;
+    object-fit: cover !important;
     border-radius: 6px;
 }
 
