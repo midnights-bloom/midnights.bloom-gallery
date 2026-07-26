@@ -30,13 +30,13 @@ function showFolders(folders){
     `;
 
         card.onclick = () => {
-            // VERIFICATION MOT DE PASSE POUR LE DOSSIER CRACKSHIPS
-            if (folder.name.toLowerCase() === "Crackships") {
+            // On vérifie si le dossier s'appelle Crackships ou crackships
+            if (folder.name === "Crackships" || folder.name === "crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
-                // Remplace "ton_mot_de_passe" par ton vrai mot de passe secret
+                // Mets ton mot de passe ici entre les guillemets
                 if (password !== "ton_mot_de_passe") {
                     alert("Mot de passe incorrect !");
-                    return; // Stoppe l'ouverture du dossier
+                    return;
                 }
             }
 
