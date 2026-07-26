@@ -15,10 +15,14 @@ const nextImage = document.getElementById("nextImage");
 const breadcrumb = document.getElementById("breadcrumb");
 
 async function getFolder(path){
-    const url = `https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    return Array.isArray(data) ? data : [];
+    try {
+        const url = `https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        return Array.isArray(data) ? data : [];
+    } catch (e) {
+        return [];
+    }
 } 
 
 function showFolders(folders){
@@ -195,24 +199,28 @@ async function initFromHash() {
 
     const segments = hash.split("/");
     let pathAcc = segments[0];
+    let foundError = false;
     
     for (let i = 1; i < segments.length; i++) {
-        try {
-            const files = await getFolder(pathAcc);
-            const targetSegment = segments[i].toLowerCase();
-            const found = files.find(f => f.type === "dir" && f.name.toLowerCase() === targetSegment);
-            
-            if (found) {
-                pathAcc = found.path;
-            } else {
-                break;
-            }
-        } catch (e) {
+        const files = await getFolder(pathAcc);
+        const targetSegment = segments[i].toLowerCase();
+        const found = files.find(f => f.type === "dir" && f.name.toLowerCase() === targetSegment);
+        
+        if (found) {
+            pathAcc = found.path;
+        } else {
+            foundError = true;
             break;
         }
     }
 
-    currentPath = pathAcc;
+    if (foundError) {
+        currentPath = ROOT;
+        window.location.hash = "";
+    } else {
+        currentPath = pathAcc;
+    }
+    
     loadFolder(currentPath);
 }
 
