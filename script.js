@@ -41,10 +41,13 @@ function showFolders(folders){
 
 function showImages(images){
     images.forEach(image => {
+        // Vérifie si le fichier est un GIF (insensible à la casse)
+        const isGif = image.name.toLowerCase().endsWith('.gif');
+
         const card = document.createElement("div");
         card.className = "icon";
         card.innerHTML = `
-            <img src="${image.download_url}" alt="">
+            <img class="${isGif ? 'gif-img' : ''}" src="${image.download_url}" alt="">
             <button class="copy" title="Copier l'URL">⧉</button>
         `;
         const button = card.querySelector(".copy");
