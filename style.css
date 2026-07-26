@@ -118,12 +118,22 @@ h1 {
     display: block;
     width: 160px;
     height: 160px;
-    object-fit: cover;
+    object-fit: cover; /* Garde le format "cover" pour les PNG/JPG */
     border-radius: 8px;
     transition: .2s;
 }
 
+/* Traitement spécifique uniquement pour les GIFs dans la grille */
+.icon img.gif-img {
+    object-fit: contain; 
+    background: var(--bg2); /* Fond assorti si le ratio du GIF ne fait pas un carré parfait */
+}
+
 .icon:hover img {
+    opacity: .8;
+}
+
+.icon:hover img.gif-img {
     opacity: .8;
 }
 
