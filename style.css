@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Astone Nouvea";
-    src: url("./Fonts/Astone-Nouvea.woff2") format("woff2"); /* Attention au 'F' majuscule de Fonts si ton dossier a une majuscule */
+    src: url(./Fonts/Astone-Nouvea.woff2) format("woff2");
     font-weight: normal;
     font-style: normal;
 }
