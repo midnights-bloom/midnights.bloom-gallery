@@ -30,10 +30,8 @@ function showFolders(folders){
     `;
 
         card.onclick = () => {
-            // On vérifie si le dossier s'appelle Crackships ou crackships
             if (folder.name === "Crackships" || folder.name === "crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
-                // Mets ton mot de passe ici entre les guillemets
                 if (password !== "swifties") {
                     alert("Mot de passe incorrect !");
                     return;
@@ -42,6 +40,9 @@ function showFolders(folders){
 
             history.push(currentPath);
             currentPath = folder.path;
+            
+            // Met à jour l'URL du navigateur sans recharger la page
+            window.location.hash = folder.path;
             loadFolder(currentPath);
         };
 
@@ -110,11 +111,11 @@ async function loadFolder(path){
 back.onclick = () => {
     if (history.length > 0) {
         currentPath = history.pop();
-        loadFolder(currentPath);
     } else {
         currentPath = ROOT;
-        loadFolder(ROOT);
     }
+    window.location.hash = currentPath === ROOT ? "" : currentPath;
+    loadFolder(currentPath);
 };
 
 const preview = document.getElementById("preview");
@@ -186,4 +187,9 @@ function updateBreadcrumb(path){
     breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
 }
 
-loadFolder(ROOT);
+// --- INITIALISATION AUTOMATIQUE VIA L'URL ---
+const hash = decodeURIComponent(window.location.hash.substring(1));
+if (hash && hash.startsWith(ROOT)) {
+    currentPath = hash;
+}
+loadFolder(currentPath);
