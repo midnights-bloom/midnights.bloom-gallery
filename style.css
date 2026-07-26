@@ -40,6 +40,8 @@ h1 {
     margin:auto;
     padding:10 px;
     border-radius:7 px;
+    position:relative;top:-10 px;
+    background-color:#F1F1F1;
 }
 
 .toolbar {
