@@ -31,7 +31,7 @@ function showFolders(folders){
 
         card.onclick = () => {
             // VERIFICATION MOT DE PASSE POUR LE DOSSIER CRACKSHIPS
-            if (folder.name.toLowerCase() === "crackships") {
+            if (folder.name.toLowerCase() === "Crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
                 // Remplace "ton_mot_de_passe" par ton vrai mot de passe secret
                 if (password !== "ton_mot_de_passe") {
