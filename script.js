@@ -30,6 +30,16 @@ function showFolders(folders){
     `;
 
         card.onclick = () => {
+            // VERIFICATION MOT DE PASSE POUR LE DOSSIER CRACKSHIPS
+            if (folder.name.toLowerCase() === "crackships") {
+                let password = prompt("Ce dossier est privé. Entre le mot de passe :");
+                // Remplace "ton_mot_de_passe" par ton vrai mot de passe secret
+                if (password !== "ton_mot_de_passe") {
+                    alert("Mot de passe incorrect !");
+                    return; // Stoppe l'ouverture du dossier
+                }
+            }
+
             history.push(currentPath);
             currentPath = folder.path;
             loadFolder(currentPath);
@@ -41,7 +51,6 @@ function showFolders(folders){
 
 function showImages(images){
     images.forEach(image => {
-        // Vérifie si le fichier est un GIF (insensible à la casse)
         const isGif = image.name.toLowerCase().endsWith('.gif');
 
         const card = document.createElement("div");
