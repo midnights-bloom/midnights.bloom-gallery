@@ -34,6 +34,14 @@ h1 {
     text-align:center;
 }
 
+.info {
+    display: block;
+    text-align: center;
+    margin:auto;
+    padding:10 px;
+    border-radius:7 px;
+}
+
 .toolbar {
     display: flex;
     flex-direction: row;
