@@ -30,7 +30,7 @@ function showFolders(folders){
     `;
 
         card.onclick = () => {
-            if (folder.name === "Crackships" || folder.name === "crackships") {
+            if (folder.name.toLowerCase() === "crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
                 if (password !== "swifties") {
                     alert("Mot de passe incorrect !");
@@ -40,8 +40,6 @@ function showFolders(folders){
 
             history.push(currentPath);
             currentPath = folder.path;
-            
-            // Met à jour l'URL du navigateur sans recharger la page
             window.location.hash = folder.path;
             loadFolder(currentPath);
         };
@@ -187,9 +185,36 @@ function updateBreadcrumb(path){
     breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
 }
 
-// --- INITIALISATION AUTOMATIQUE VIA L'URL ---
-const hash = decodeURIComponent(window.location.hash.substring(1));
-if (hash && hash.startsWith(ROOT)) {
-    currentPath = hash;
+// --- INITIALISATION AUTOMATIQUE ET INSENSIBLE À LA CASSE ---
+async function initFromHash() {
+    const hash = decodeURIComponent(window.location.hash.substring(1));
+    if (!hash || !hash.toLowerCase().startsWith(ROOT.toLowerCase())) {
+        loadFolder(ROOT);
+        return;
+    }
+
+    const segments = hash.split("/");
+    let pathAcc = segments[0]; // Devrait être "Assets"
+    
+    // On descend étape par étape dans les dossiers en ignorant les majuscules/minuscules
+    for (let i = 1; i < segments.length; i++) {
+        try {
+            const files = await getFolder(pathAcc);
+            const targetSegment = segments[i].toLowerCase();
+            const found = files.find(f => f.type === "dir" && f.name.toLowerCase() === targetSegment);
+            
+            if (found) {
+                pathAcc = found.path;
+            } else {
+                break; // Si un sous-dossier n'est pas trouvé, on s'arrête là
+            }
+        } catch (e) {
+            break;
+        }
+    }
+
+    currentPath = pathAcc;
+    loadFolder(currentPath);
 }
-loadFolder(currentPath);
+
+initFromHash();
