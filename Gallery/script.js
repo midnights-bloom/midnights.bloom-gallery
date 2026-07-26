@@ -1,6 +1,6 @@
-const USER="midnights-bloom";
-const REPO="midnights.bloom-gallery";
-const ROOT="Gallery";
+const USER="skatevibe";
+const REPO="rpg-assets-template";
+const ROOT="assets";
  
 const gallery=document.getElementById("gallery");
 const back=document.getElementById("back");
