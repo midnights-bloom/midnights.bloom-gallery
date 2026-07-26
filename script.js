@@ -1,5 +1,5 @@
 const USER="midnights.bloom-gallery";
-const REPO="midnights.bloom-gallery";
+const REPO="midnights.bloom-gallery-template";
 const ROOT="assets";
  
 const gallery=document.getElementById("gallery");
