@@ -14,7 +14,6 @@ const prevImage = document.getElementById("prevImage");
 const nextImage = document.getElementById("nextImage");
 const breadcrumb = document.getElementById("breadcrumb");
 
-// récupérer le contenu d'un dossier github
 async function getFolder(path){
     const url = `https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
     const res = await fetch(url);
@@ -68,7 +67,6 @@ function showImages(images){
     });
 }
 
-// charge un dossier
 async function loadFolder(path){
     gallery.innerHTML = "";
 
@@ -88,18 +86,15 @@ async function loadFolder(path){
     showFolders(folders);
     showImages(images);
 
-    // affiche le bouton retour si pas à la racine
     if(path !== ROOT){
         back.classList.remove("hidden");
     }else{
         back.classList.add("hidden");
     }
 
-    // fil d'ariane
     updateBreadcrumb(path);
 }
 
-// back to homepage
 back.onclick = () => {
     if (history.length > 0) {
         currentPath = history.pop();
@@ -110,7 +105,6 @@ back.onclick = () => {
     }
 };
 
-// ajoute le preview
 const preview = document.getElementById("preview");
 const previewImage = document.getElementById("previewImage");
 
@@ -139,7 +133,6 @@ function hidePreview(){
     }, 250);
 }
 
-// ferme quand je clique en-dehors de l'image
 if(preview){
     preview.onclick = (e) => {
         if(e.target === preview){
@@ -148,7 +141,6 @@ if(preview){
     };
 }
 
-// comportement du clic sur les flèches de preview
 prevImage.onclick = (e) => {
     e.stopPropagation();
     showImage(currentImageIndex - 1);
@@ -170,7 +162,6 @@ function showImage(index){
     previewImage.src = currentImages[currentImageIndex].download_url;
 }
 
-// ajout fil d'ariane
 function updateBreadcrumb(path){
     if(!breadcrumb) return;
 
@@ -183,5 +174,4 @@ function updateBreadcrumb(path){
     breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
 }
 
-// lance la galerie
 loadFolder(ROOT);

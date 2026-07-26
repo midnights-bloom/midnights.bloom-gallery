@@ -29,7 +29,7 @@ body {
 }
 
 h1 {
-    font-family: "Astone Nouvea";
+    font-family: "Astone Nouvea", sans-serif;
     font-size: 42px;
 }
 
@@ -50,7 +50,7 @@ h1 {
 #back {
     padding: 10px 16px;
     background: var(--tx1);
-    border:1px solid #0a0605;
+    border: 1px solid #0a0605;
     border-radius: 8px;
     cursor: pointer;
     transition: .2s;
@@ -78,18 +78,18 @@ h1 {
 }
 
 .folder {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    width:160px;
-    height:160px;
-    padding:12px;
-    background:var(--bg2);
-    border:1px solid var(--bg3);
-    border-radius:12px;
-    cursor:pointer;
-    transition:.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+    padding: 12px;
+    background: var(--bg2);
+    border: 1px solid var(--bg3);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .2s;
 }
 
 .folder:hover {
@@ -97,9 +97,9 @@ h1 {
 }
 
 .folder .name {
-    margin-top:10px;
-    text-align:center;
-    font-size:14px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
     color: var(--tx1);
 }
 
@@ -198,33 +198,32 @@ h1 {
     opacity: 0;
 }
 
-.nav{
+.nav {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
-    border: none;
     border-radius: 50%;
-    background: #00000030;
+    background: rgba(0, 0, 0, 0.3);
     color: white;
     font-size: 24px;
     cursor: pointer;
     z-index: 10;
     backdrop-filter: blur(10px);
-    border: 1px solid var(--color1);
+    border: 1px solid var(--bg3);
     transition: .2s;
     padding-bottom: 5px;
 }
 
-.prev{
+.prev {
     left: -70px;
 }
 
-.next{
+.next {
     margin-left: 20px;
 }
 
-.nav:hover{
-    background: var(--color1);
+.nav:hover {
+    background: var(--bg3);
 }
