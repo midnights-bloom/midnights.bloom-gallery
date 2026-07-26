@@ -126,7 +126,11 @@ h1 {
 
 /* Traitement spécifique uniquement pour les GIFs dans la grille */
 .icon img.gif-img {
-    object-fit: cover; 
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+    object-fit: contain;
+    border-radius: 6px;
 }
 
 .icon:hover img {
