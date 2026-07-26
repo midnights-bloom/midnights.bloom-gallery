@@ -17,7 +17,8 @@ const breadcrumb = document.getElementById("breadcrumb");
 async function getFolder(path){
     const url = `https://api.github.com/repos/${USER}/${REPO}/contents/${path}`;
     const res = await fetch(url);
-    return await res.json();
+    const data = await res.json();
+    return Array.isArray(data) ? data : [];
 } 
 
 function showFolders(folders){
@@ -185,7 +186,6 @@ function updateBreadcrumb(path){
     breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
 }
 
-// --- INITIALISATION AUTOMATIQUE ET INSENSIBLE À LA CASSE ---
 async function initFromHash() {
     const hash = decodeURIComponent(window.location.hash.substring(1));
     if (!hash || !hash.toLowerCase().startsWith(ROOT.toLowerCase())) {
@@ -194,9 +194,8 @@ async function initFromHash() {
     }
 
     const segments = hash.split("/");
-    let pathAcc = segments[0]; // Devrait être "Assets"
+    let pathAcc = segments[0];
     
-    // On descend étape par étape dans les dossiers en ignorant les majuscules/minuscules
     for (let i = 1; i < segments.length; i++) {
         try {
             const files = await getFolder(pathAcc);
@@ -206,7 +205,7 @@ async function initFromHash() {
             if (found) {
                 pathAcc = found.path;
             } else {
-                break; // Si un sous-dossier n'est pas trouvé, on s'arrête là
+                break;
             }
         } catch (e) {
             break;
