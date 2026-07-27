@@ -39,10 +39,8 @@ h1 {
     width:500 px;
     text-align: center;
     margin:auto;
-    position:relative;top:-10 px;
-    background-color:#a7adae;
-    padding:10 px;
-    border-radius:7 px;
+    padding-top:-10 px;
+    padding-bottom:5 px;
 }
 
 .toolbar {
