@@ -98,8 +98,12 @@ async function loadFolder(path){
         /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
     );
 
-    // Tri pour afficher les plus récents en premier (par ordre décroissant)
-    images.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true, sensitivity: 'base' }));
+    // Tri numérique inversé basé sur les chiffres à la fin du nom de fichier
+    images.sort((a, b) => {
+        const numA = parseInt(a.name.match(/\d+$/)?.[0] || 0, 10);
+        const numB = parseInt(b.name.match(/\d+$/)?.[0] || 0, 10);
+        return numB - numA;
+    });
 
     currentImages = images;
 
