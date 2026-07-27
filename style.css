@@ -36,12 +36,13 @@ h1 {
 
 .info {
     display: block;
+    width: 500 px;
     text-align: center;
     margin:auto;
-    position:relative;top:-10 px;
-    background-color:#F1F1F1;
-    padding:10 px;
-    border-radius:7 px;
+    position:relative;top: -10 px;
+    background-color:#a7adae;
+    padding: 10 px;
+    border-radius: 7 px;
 }
 
 .toolbar {
