@@ -46,6 +46,21 @@ h1 {
     top: -25px !important;
 }
 
+.iconeheader{
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+  background-color: #ffffff;
+  padding: 10px;
+  box-shadow: 0px 0px 5px #e0e0e0;
+  border: 1px solid #ffffff;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
 .toolbar {
     display: flex;
     flex-direction: row;
