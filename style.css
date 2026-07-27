@@ -36,11 +36,9 @@ h1 {
 
 .info {
     display: block;
-    width:500 px;
     text-align: center;
     margin:auto;
-    padding-top:-10 px;
-    padding-bottom:5 px;
+   position: relative; top: 10 px;
 }
 
 .toolbar {
