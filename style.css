@@ -41,7 +41,8 @@ h1 {
 .interinfo {
      display: block;
     margin:auto;
- background-color: #ffffff;
+ background: var(--bg2);
+    border: 1px solid var(--bg3);
     border-radius: 20px !important;
     width: 80% !important;
     padding:20px
