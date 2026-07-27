@@ -38,6 +38,12 @@ h1 {
  
 }
 
+.interinfo {
+ background-color: #ffffff;
+    border-radius: 50px !important;
+    width: 500px !important;
+}
+
 .info {
     display: block;
     text-align: center;
