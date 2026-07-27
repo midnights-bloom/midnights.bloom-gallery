@@ -88,20 +88,23 @@ async function loadFolder(path){
 
     const files = await getFolder(path);
 
-    const folders = files.filter(
-        f => f.type === "dir"
-    );
+    const folders = files.filter(f => f.type === "dir");
+
+    // Tri strict et propre pour les dossiers du plus récent au plus ancien
+    folders.sort((a, b) => {
+        const numA = parseInt((a.name.match(/\d+/) || [0])[0], 10);
+        const numB = parseInt((b.name.match(/\d+/) || [0])[0], 10);
+        return numB - numA;
+    });
 
     const images = files.filter(
-        f =>
-        f.type === "file" &&
-        /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
+        f => f.type === "file" && /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
     );
 
-    // Tri numérique inversé basé sur les chiffres à la fin du nom de fichier
+    // Tri strict et propre pour les images (ex: Amanda02 avant Amanda01)
     images.sort((a, b) => {
-        const numA = parseInt(a.name.match(/\d+$/)?.[0] || 0, 10);
-        const numB = parseInt(b.name.match(/\d+$/)?.[0] || 0, 10);
+        const numA = parseInt((a.name.match(/\d+/) || [0])[0], 10);
+        const numB = parseInt((b.name.match(/\d+/) || [0])[0], 10);
         return numB - numA;
     });
 
