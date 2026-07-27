@@ -39,9 +39,12 @@ h1 {
 }
 
 .interinfo {
+     display: block;
+    margin:auto;
  background-color: #ffffff;
-    border-radius: 50px !important;
-    width: 500px !important;
+    border-radius: 20px !important;
+    width: 80% !important;
+    padding:20px
 }
 
 .info {
