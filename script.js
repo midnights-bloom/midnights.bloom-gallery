@@ -97,6 +97,10 @@ async function loadFolder(path){
         f.type === "file" &&
         /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
     );
+
+    // Tri pour afficher les plus récents en premier (par ordre décroissant)
+    images.sort((a, b) => b.name.localeCompare(a.name, undefined, { numeric: true, sensitivity: 'base' }));
+
     currentImages = images;
 
     showFolders(folders);
