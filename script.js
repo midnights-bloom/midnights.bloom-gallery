@@ -36,18 +36,17 @@ function showFolders(folders){
     `;
 
         card.onclick = () => {
-            if (folder.name.toLowerCase() === "crackships") {
+                   if (folder.name.toLowerCase() === "crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
                 
-                // Fonction pour hasher le mot de passe entré
                 const encoder = new TextEncoder();
                 const data = encoder.encode(password || "");
                 
                 crypto.subtle.digest('SHA-256', data).then(hashBuffer => {
                     const hashArray = Array.from(new Uint8Array(hashBuffer));
                     const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-                    
-                    // Le hash SHA-256 correspondant exactement au mot de passe "s*****es"
+
+                 // Le hash SHA-256 correspondant exactement au mot de passe "s*****es"//
                     const correctHash = "e838b4bf9053075c026da68a1d7fce51efb7d2dbf11ea89bc9f9fec5f12a144e";
 
                     if (hashHex !== correctHash) {
@@ -55,13 +54,15 @@ function showFolders(folders){
                         return;
                     }
 
-                    // Si le mot de passe est correct, on continue l'ouverture du dossier
+                    // Si c'est bon, on ouvre le dossier
                     history.push(currentPath);
                     currentPath = folder.path;
                     window.location.hash = folder.path;
                     loadFolder(currentPath);
+                }).catch(err => {
+                    alert("Erreur de sécurisation.");
                 });
-                return; // Empêche l'exécution immédiate en bas de la fonction le temps de vérifier
+                return;
             }
 
             history.push(currentPath);
