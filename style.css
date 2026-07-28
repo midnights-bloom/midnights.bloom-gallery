@@ -188,6 +188,7 @@ symb {
     padding-bottom: 42px;
     width: 70% !important;
     margin: 0 auto !important;
+    justify-content: center;
 }
 
 //barre de recherche//
