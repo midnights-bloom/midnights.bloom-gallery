@@ -197,9 +197,9 @@ symb {
 }
 
 #folderSearch {
-    background-color: #1a1a1c;
+     background: var(--bg2);
+    border: 1px solid var(--bg3);
     color: #fff;
-    border: 1px solid #2a2a2e;
     border-radius: 6px;
     padding: 10px 14px;
     font-size: 14px;
