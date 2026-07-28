@@ -187,6 +187,7 @@ symb {
     gap: 20px;
     padding-bottom: 42px;
     width: 60% !important;
+    margin: 0 auto !important;
 }
 
 //barre de recherche//
