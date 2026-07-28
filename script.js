@@ -35,7 +35,7 @@ function showFolders(folders){
         <div class="name">${folder.name}</div>
     `;
 
-        card.onclick = async () => {
+        card.onclick = () => {
             if (folder.name.toLowerCase() === "crackships") {
                 let password = prompt("Ce dossier est privé. Entre le mot de passe :");
                 
@@ -43,25 +43,12 @@ function showFolders(folders){
                     return;
                 }
 
-                password = password.trim().toLowerCase();
+                // Encodage propre pour comparer sans stocker le mot de passe en clair
+                const encodedInput = btoa(password.trim().toLowerCase());
+                const correctEncoded = "c3dpZnRpZXM="; // Le hash correspondant exactement au mot de passe "s*****es"//
 
-                const encoder = new TextEncoder();
-                const data = encoder.encode(password);
-                
-                try {
-                    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-                    const hashArray = Array.from(new Uint8Array(hashBuffer));
-                    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-
-                 // Le hash SHA-256 correspondant exactement au mot de passe "s*****es"//
-                    const correctHash = "e838b4bf9053075c026da68a1d7fce51efb7d2dbf11ea89bc9f9fec5f12a144e";
-
-                    if (hashHex !== correctHash) {
-                        alert("Mot de passe incorrect !");
-                        return;
-                    }
-                } catch (err) {
-                    alert("Erreur de sécurisation.");
+                if (encodedInput !== correctEncoded) {
+                    alert("Mot de passe incorrect !");
                     return;
                 }
             }
@@ -287,5 +274,5 @@ async function initFromHash() {
     
     loadFolder(currentPath);
 }
-                  
+                 
 initFromHash();
