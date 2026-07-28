@@ -117,6 +117,29 @@ symb {
     letter-spacing: 1px;
 }
 
+.btn-style {
+    padding: 10px 16px;
+    background: var(--tx1);
+    border: 1px solid #0a0605;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .2s;
+    color: var(--bg2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 12px;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-style:hover {
+    background: var(--bg3);
+    color: var(--tx1);
+    display: block;
+    margin: 0 auto;
+}
+
 #back, .btn-style {
     padding: 10px 16px;
     background: var(--tx1);
