@@ -47,55 +47,48 @@ h1 {
     border-radius: 20px !important;
     width: 60% !important;
     padding: 20px;
-    margin-top: 30px; /* Laisse un peu d'espace en haut pour le titre qui dépasse */
+    
+    /* --- NOUVEAUX AJOUTS POUR LE CHEVAUCHEMENT --- */
+    margin-top: 70px; /* Espace important au-dessus pour l'image */
+    position: relative; /* Nécessaire pour positionner l'enfant en absolute */
 }
 
-/* Ligne contenant le titre et l'image */
-.header-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative; /* Indispensable pour positionner le titre par-dessus */
-    height: 120px; /* Aligné sur la hauteur de ton image */
-    margin-bottom: 10px;
-}
-
-/* Titre par-dessus l'image */
-.header-row h1 {
-    margin: 0;
-    text-align: center;
-    position: absolute; /* Sort du flux pour superposer */
-    z-index: 10; /* Force le titre au premier plan */
-    text-shadow: 0 2px 5px rgba(0,0,0,0.6); /* Améliore la lisibilité par-dessus l'image */
-}
-
-/* Style de l'image (taille à 120px comme dans ton code) */
+/* L'image en superposition */
 .iconeheader {
+    /* --- NOUVEAUX AJOUTS POUR LE CHEVAUCHEMENT --- */
+    position: absolute; /* Sort l'image du flux */
+    top: -70px;         /* Remonte l'image de 70px (la moitié de sa hauteur + padding) */
+    left: 50%;          /* La place au milieu */
+    transform: translateX(-50%); /* Centre parfaitement horizontalement */
+    z-index: 10;        /* Force l'image au premier plan */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* Ombre pour l'effet "flottant" */
+
+    /* Tes styles d'origine (taille, bordure blanche, etc.) */
     width: 140px !important;
     height: 140px !important;
     object-fit: cover !important;
     background-color: #ffffff;
     border-radius: 100px !important;
     padding: 4px;
-    box-shadow: 0px 0px 5px #e0e0e0;
-    border: 1px solid #ffffff;
+    border: 4px solid #ffffff; /* Bordure blanche épaisse comme sur l'image */
     transition: all 0.5s;
-    flex-shrink: 0;
-    position: relative;top:-50px;
-    z-index: 1; /* L'image reste en arrière-plan par rapport au titre */
-    /* C'est ici que tu la décales : */
-    margin-left: 0px;  /* Pousse l'image vers la droite */
-    /* OU margin-right: 30px; pour la pousser vers la gauche */
+}
+
+/* Titre juste en dessous */
+.interinfo h1 {
+    margin: 0;
+    margin-top: 20px; /* Petit espace entre le haut de la boîte et le titre */
+    text-align: center;
 }
 
 /* Texte en dessous */
 .info {
     display: block;
-    text-align: justify;
-    text-align-last: center;
+    text-align: center; /* Ou justify si tu préfères, mais centré est plus simple ici */
     margin: 0 auto;
     max-width: 95%;
     padding: 0;
+    margin-top: 10px;
 }
 
 .toolbar {
