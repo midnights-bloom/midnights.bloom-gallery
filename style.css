@@ -71,8 +71,8 @@ h1 {
 
 /* Style de l'image (taille à 120px comme dans ton code) */
 .iconeheader {
-    width: 100px !important;
-    height: 100px !important;
+    width: 80px !important;
+    height: 80px !important;
     object-fit: cover !important;
     background-color: #ffffff;
     border-radius: 100px !important;
@@ -84,7 +84,7 @@ h1 {
     position: relative;
     z-index: 1; /* L'image reste en arrière-plan par rapport au titre */
     /* C'est ici que tu la décales : */
-    margin-right: 350px;  /* Pousse l'image vers la droite */
+    margin-right: 380px;  /* Pousse l'image vers la droite */
     /* OU margin-right: 30px; pour la pousser vers la gauche */
 }
 
