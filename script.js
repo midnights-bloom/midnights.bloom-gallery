@@ -29,6 +29,7 @@ function showFolders(folders){
     folders.forEach(folder => {
         const card = document.createElement("div");
         card.className = "folder";
+        card.setAttribute("data-name", folder.name.toLowerCase());
         card.innerHTML = `
         <img class="folder-icon" src="./Pngs/folder.png" alt="folder">
         <div class="name">${folder.name}</div>
@@ -101,7 +102,7 @@ async function loadFolder(path){
         f => f.type === "file" && /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
     );
 
-    // Tri strict et propre pour les images (ex: Amanda02 avant Amanda01)
+    // Tri strict et propre pour les images
     images.sort((a, b) => {
         const numA = parseInt((a.name.match(/\d+/) || [0])[0], 10);
         const numB = parseInt((b.name.match(/\d+/) || [0])[0], 10);
@@ -120,6 +121,18 @@ async function loadFolder(path){
     }
 
     updateBreadcrumb(path);
+
+    // Gestion de l'affichage de la barre de recherche (uniquement dans Assets/Avatars)
+    const searchInput = document.getElementById('folderSearch');
+    if (searchInput) {
+        if (path.toLowerCase() === "assets/avatars") {
+            searchInput.style.display = "block";
+            searchInput.value = "";
+            filterFolders(); // Réinitialise le filtre
+        } else {
+            searchInput.style.display = "none";
+        }
+    }
 }
 
 back.onclick = () => {
@@ -199,6 +212,20 @@ function updateBreadcrumb(path){
     }
 
     breadcrumb.textContent = parts.length ? parts.join(" / ") : "accueil";
+}
+
+function filterFolders() {
+    const input = document.getElementById('folderSearch').value.toLowerCase();
+    const folderCards = document.querySelectorAll('.folder');
+
+    folderCards.forEach(card => {
+        const name = card.getAttribute('data-name');
+        if (name.includes(input)) {
+            card.style.display = ""; 
+        } else {
+            card.style.display = "none"; 
+        }
+    });
 }
 
 async function initFromHash() {
