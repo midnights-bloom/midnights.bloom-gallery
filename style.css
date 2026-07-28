@@ -249,14 +249,12 @@ symb {
 .icon {
     position: relative;
     width: 160px;
-    height: 160px;
     cursor: pointer;
 }
 
 .icon img {
     display: block;
     width: 160px;
-    height: 160px;
     object-fit: cover; /* Garde le format "cover" pour les PNG/JPG */
     border-radius: 8px;
     transition: .2s;
