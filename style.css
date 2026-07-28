@@ -131,6 +131,8 @@ symb {
     font-size: 12px;
     display: block;
     margin: 0 auto;
+    margin-top: 15px; /* Petit espace entre le haut de la boîte et le titre */
+    margin-bottom: 10px; /* Petit espace entre le haut de la boîte et le titre */
 }
 
 .btn-style:hover {
@@ -138,6 +140,8 @@ symb {
     color: var(--tx1);
     display: block;
     margin: 0 auto;
+    margin-top: 15px; /* Petit espace entre le haut de la boîte et le titre */
+    margin-bottom: 10px; /* Petit espace entre le haut de la boîte et le titre */
 }
 
 #back, .btn-style {
