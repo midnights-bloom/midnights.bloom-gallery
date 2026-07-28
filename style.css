@@ -59,8 +59,8 @@ h1 {
 .interinfo-content {
     display: flex;
     align-items: center; /* Aligne verticalement au centre */
-    justify-content: space-between; /* Espace entre le texte et l'image */
-    gap: 20px;
+    justify-content: space-between; 
+    gap: 10px; /* Réduit l'espace entre le texte et l'image */
 }
 
 .info {
