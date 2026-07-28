@@ -394,7 +394,7 @@ symb {
     }
 
     h1 {
-        font-size: 28px; /* Réduit un peu la taille du titre pour éviter qu'il soit coupé */
+        font-size: 27px; /* Réduit un peu la taille du titre pour éviter qu'il soit coupé */
     }
 
     .btn-style {
