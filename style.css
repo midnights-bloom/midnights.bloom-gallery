@@ -121,7 +121,7 @@ symb {
     align-items: center;
     margin-bottom: 30px;
      margin-left:30px;
-    margin-top:15px;
+    margin-top:30px;
 }
 
 #breadcrumb {
@@ -158,7 +158,7 @@ symb {
     margin-bottom: 10px; /* Petit espace entre le haut de la boîte et le titre */
 }
 
-#back, .btn-style {
+#back {
     padding: 10px 16px;
     background: var(--tx1);
     border: 1px solid #0a0605;
@@ -172,7 +172,7 @@ symb {
     font-size: 12px;
 }
 
-#back:hover, .btn-style:hover {
+#back:hover {
     background: var(--bg3);
     color: var(--tx1);
 }
