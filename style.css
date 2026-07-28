@@ -378,3 +378,32 @@ symb {
 .nav:hover {
     background: var(--bg3);
 }
+
+/* --- ADAPTATION POUR LES ÉCRANS DE TÉLÉPHONE (MOBILE) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 15px; /* Réduit les marges autour de la page pour gagner de l'espace */
+    }
+
+    .interinfo, #gallery {
+        width: 95% !important; /* Élargit les blocs sur mobile pour qu'ils prennent toute la place disponible */
+    }
+
+    .info {
+        width: 100%; /* Force le texte à rester à l'intérieur de la boîte sans déborder */
+    }
+
+    h1 {
+        font-size: 30px; /* Réduit un peu la taille du titre pour éviter qu'il soit coupé */
+    }
+
+    .btn-style {
+        width: 100%; /* Adapte le bouton à la largeur du bloc */
+        font-size: 11px;
+        padding: 10px 8px;
+    }
+
+    #folderSearch {
+        max-width: 100%; /* Permet à la barre de recherche de bien s'adapter */
+    }
+}
