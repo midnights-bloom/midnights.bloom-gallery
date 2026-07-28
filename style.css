@@ -95,6 +95,7 @@ h1 {
     margin-top: 10px;
 }
 
+/* --- SYMBOL ⊹ ⊹ ⊹ ⊹ ⊹ ⊹ --- */
 symb {
     display: block; /* Permet d'appliquer des marges, tailles, etc. */
    text-align: center;
@@ -129,9 +130,10 @@ symb {
     letter-spacing: 1px;
     font-weight: 600;
     font-size: 12px;
+    text-align: CENTER;
     display: block;
     margin: 0 auto;
-    margin-top: 15px; /* Petit espace entre le haut de la boîte et le titre */
+    margin-top: 20px; /* Petit espace entre le haut de la boîte et le titre */
     margin-bottom: 10px; /* Petit espace entre le haut de la boîte et le titre */
 }
 
