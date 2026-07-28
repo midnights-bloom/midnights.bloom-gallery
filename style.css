@@ -117,8 +117,7 @@ h1 {
 
 //barre de recherche//
 .search-wrapper {
-    margin-top: 0px;
-    margin-bottom: 15px;
+    margin: 15px 0;
 }
 
 #folderSearch {
