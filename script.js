@@ -48,7 +48,7 @@ function showFolders(folders){
                     const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
                     
                     // Le hash SHA-256 correspondant exactement au mot de passe "s*****es"
-                    const correctHash = "10b83e3e0a2944b5a0342cb233d6a2f3a695d7cd46bf8061f0629a8f4c40212f";
+                    const correctHash = "e838b4bf9053075c026da68a1d7fce51efb7d2dbf11ea89bc9f9fec5f12a144e";
 
                     if (hashHex !== correctHash) {
                         alert("Mot de passe incorrect !");
