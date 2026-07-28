@@ -66,11 +66,12 @@ function showFolders(folders){
 function showImages(images){
     images.forEach(image => {
         const isGif = image.name.toLowerCase().endsWith('.gif');
+        const isCrackship = currentPath.toLowerCase().includes('crackships');
 
         const card = document.createElement("div");
         card.className = "icon";
         card.innerHTML = `
-            <img class="${isGif ? 'gif-img' : ''}" src="${image.download_url}" alt="">
+            <img class="${isGif ? 'gif-img' : ''} ${isCrackship ? 'crackship-img' : ''}" src="${image.download_url}" alt="">
             <button class="copy" title="Copier l'URL">⧉</button>
         `;
         const button = card.querySelector(".copy");
