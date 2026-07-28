@@ -53,15 +53,15 @@ h1 {
 .header-row {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px; /* Réduit l'espace entre le haut et le texte en dessous */
+    justify-content: center; /* Centre l'ensemble titre + image */
+    gap: 15px; /* Contrôle l'espace exact entre le titre et l'image (réduis cette valeur si tu veux les rapprocher encore plus) */
+    margin-bottom: 10px;
 }
 
-/* Titre centré */
+/* Titre */
 .header-row h1 {
     margin: 0;
     text-align: center;
-    flex-grow: 1; /* Permet au titre de prendre la place et de se centrer harmonieusement par rapport à l'image */
 }
 
 /* Style de l'image */
@@ -78,11 +78,11 @@ h1 {
     flex-shrink: 0;
 }
 
-/* Texte centré et justifié en dessous */
+/* Texte en dessous */
 .info {
     display: block;
-    text-align: justify; /* Justifié */
-    text-align-last: center; /* Centre la dernière ligne si elle est plus courte */
+    text-align: justify;
+    text-align-last: center;
     margin: 0 auto;
     max-width: 95%;
     padding: 0;
