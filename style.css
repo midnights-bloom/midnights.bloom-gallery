@@ -81,7 +81,7 @@ h1 {
     border: 1px solid #ffffff;
     transition: all 0.5s;
     flex-shrink: 0;
-    position: relative;top:-20px;
+    position: relative;top:-50px;
     z-index: 1; /* L'image reste en arrière-plan par rapport au titre */
     /* C'est ici que tu la décales : */
     margin-left: 0px;  /* Pousse l'image vers la droite */
