@@ -39,22 +39,35 @@ h1 {
 }
 
 .interinfo {
-     display: block;
-    margin:auto;
- background: var(--bg2);
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background: var(--bg2);
     border: 1px solid var(--bg3);
     border-radius: 20px !important;
     width: 60% !important;
-    padding:20px
+    padding: 20px;
+}
+
+/* Titre centré en haut */
+.interinfo h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Conteneur des deux colonnes (texte et image) */
+.interinfo-content {
+    display: flex;
+    align-items: center; /* Aligne verticalement au centre */
+    justify-content: space-between; /* Espace entre le texte et l'image */
+    gap: 20px;
 }
 
 .info {
     display: block;
-    text-align: center;
-    margin:auto;
-   position: relative; 
-    top: -30px !important;
-    padding-right:10px;
+    text-align: left; /* Aligne le texte à gauche dans sa colonne */
+    margin: 0;
+    padding-right: 10px;
 }
 
 .iconeheader {
@@ -67,6 +80,7 @@ h1 {
     box-shadow: 0px 0px 5px #e0e0e0;
     border: 1px solid #ffffff;
     transition: all 0.5s;
+    flex-shrink: 0; /* Empêche l'image de se déformer si l'écran est plus petit */
 }
 
 .toolbar {
