@@ -246,6 +246,12 @@ symb {
     width: 36px;
 }
 
+.crackship-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+
 .icon {
     position: relative;
     width: 160px;
