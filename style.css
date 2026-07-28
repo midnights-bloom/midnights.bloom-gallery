@@ -81,7 +81,7 @@ h1 {
     text-align: center;
     /* --- SUPERPOSITION --- */
     position: relative;
-    z-index: 1; /* Niveau haut : passe au-dessus de l'image */
+    z-index: 15; /* Niveau haut : passe au-dessus de l'image */
 }
 
 /* Texte en dessous */
