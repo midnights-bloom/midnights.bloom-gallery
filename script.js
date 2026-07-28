@@ -234,7 +234,7 @@ function filterFolders() {
 
     folderCards.forEach(card => {
         const name = card.getAttribute('data-name');
-        if (name.includes(input)) {
+        if (name.startsWith(input)) {
             card.style.display = ""; 
         } else {
             card.style.display = "none"; 
