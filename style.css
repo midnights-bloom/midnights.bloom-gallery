@@ -186,6 +186,7 @@ symb {
     grid-template-columns: repeat(auto-fill, 160px);
     gap: 20px;
     padding-bottom: 42px;
+    width: 60% !important;
 }
 
 //barre de recherche//
