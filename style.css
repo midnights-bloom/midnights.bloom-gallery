@@ -117,7 +117,7 @@ symb {
     letter-spacing: 1px;
 }
 
-#back {
+#back, .btn-style {
     padding: 10px 16px;
     background: var(--tx1);
     border: 1px solid #0a0605;
@@ -131,7 +131,7 @@ symb {
     font-size: 12px;
 }
 
-#back:hover {
+#back:hover, .btn-style:hover {
     background: var(--bg3);
     color: var(--tx1);
 }
