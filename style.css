@@ -142,7 +142,7 @@ symb {
     color: var(--tx1);
     display: block;
     margin: 0 auto;
-    margin-top: 15px; /* Petit espace entre le haut de la boîte et le titre */
+    margin-top: 20px; /* Petit espace entre le haut de la boîte et le titre */
     margin-bottom: 10px; /* Petit espace entre le haut de la boîte et le titre */
 }
 
