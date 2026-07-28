@@ -122,15 +122,16 @@ async function loadFolder(path){
 
     updateBreadcrumb(path);
 
-    // Gestion de l'affichage de la barre de recherche (uniquement dans Assets/Avatars)
+    // Gestion de l'affichage du bloc de recherche (dès qu'on est dans un dossier contenant "avatar")
+    const searchWrapper = document.getElementById('searchWrapper');
     const searchInput = document.getElementById('folderSearch');
-    if (searchInput) {
-        if (path.toLowerCase() === "assets/avatars") {
-            searchInput.style.display = "block";
+    if (searchWrapper && searchInput) {
+        if (path.toLowerCase().includes("avatar")) {
+            searchWrapper.style.display = "block";
             searchInput.value = "";
             filterFolders(); // Réinitialise le filtre
         } else {
-            searchInput.style.display = "none";
+            searchWrapper.style.display = "none";
         }
     }
 }
