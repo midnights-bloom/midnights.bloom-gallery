@@ -95,6 +95,12 @@ h1 {
     margin-top: 10px;
 }
 
+symb {
+    display: block; /* Permet d'appliquer des marges, tailles, etc. */
+   text-align: center;
+    margin: 0 auto;
+}
+
 .toolbar {
     display: flex;
     flex-direction: row;
