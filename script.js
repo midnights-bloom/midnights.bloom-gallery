@@ -122,11 +122,14 @@ async function loadFolder(path){
 
     updateBreadcrumb(path);
 
-    // Gestion de l'affichage du bloc de recherche (dès qu'on est dans un dossier contenant "avatar")
+    // Gestion de l'affichage du bloc de recherche (uniquement à la racine du dossier Avatars)
     const searchWrapper = document.getElementById('searchWrapper');
     const searchInput = document.getElementById('folderSearch');
     if (searchWrapper && searchInput) {
-        if (path.toLowerCase().includes("avatar")) {
+        const parts = path.split("/");
+        const isExactAvatarsRoot = parts.length === 2 && parts[0].toLowerCase() === "assets" && parts[1].toLowerCase() === "avatars";
+
+        if (isExactAvatarsRoot) {
             searchWrapper.style.display = "block";
             searchInput.value = "";
             filterFolders(); // Réinitialise le filtre
