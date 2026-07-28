@@ -54,16 +54,17 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Réduit l'espace entre le haut et le texte en dessous */
 }
 
-/* Titre */
+/* Titre centré */
 .header-row h1 {
     margin: 0;
-    text-align: left;
+    text-align: center;
+    flex-grow: 1; /* Permet au titre de prendre la place et de se centrer harmonieusement par rapport à l'image */
 }
 
-/* Style de l'image avec toutes tes propriétés d'origine */
+/* Style de l'image */
 .iconeheader {
     width: 140px !important;
     height: 140px !important;
@@ -77,11 +78,13 @@ h1 {
     flex-shrink: 0;
 }
 
-/* Texte en dessous */
+/* Texte centré et justifié en dessous */
 .info {
     display: block;
-    text-align: justify;
-    margin: 0;
+    text-align: justify; /* Justifié */
+    text-align-last: center; /* Centre la dernière ligne si elle est plus courte */
+    margin: 0 auto;
+    max-width: 95%;
     padding: 0;
 }
 
