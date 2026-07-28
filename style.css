@@ -77,7 +77,7 @@ h1 {
 /* Titre juste en dessous */
 .interinfo h1 {
     margin: 0;
-    margin-top: 25px; /* Petit espace entre le haut de la boîte et le titre */
+    margin-top: 30px; /* Petit espace entre le haut de la boîte et le titre */
     margin-bottom: -22px; /* Petit espace entre le haut de la boîte et le titre */
     text-align: center;
     /* --- SUPERPOSITION --- */
