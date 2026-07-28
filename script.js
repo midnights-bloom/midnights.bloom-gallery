@@ -288,3 +288,4 @@ async function initFromHash() {
     loadFolder(currentPath);
 }
                   
+initFromHash();
