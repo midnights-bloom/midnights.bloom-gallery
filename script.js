@@ -65,9 +65,10 @@ function showFolders(folders){
 
 function showImages(images){
     images.forEach(image => {
-        const isGif = image.name.toLowerCase().endsWith('.gif');
+        const isAvatarFolder = currentPath.toLowerCase().includes('avatars');
+        const isGif = image.name.toLowerCase().endsWith('.gif') && !isAvatarFolder;
         const isCrackship = currentPath.toLowerCase().includes('crackships');
-
+     
         const card = document.createElement("div");
         card.className = "icon";
         card.innerHTML = `
