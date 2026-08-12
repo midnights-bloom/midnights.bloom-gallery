@@ -267,8 +267,13 @@ symb {
 }
 
 /* Traitement spécifique uniquement pour les GIFs dans la grille */
-.icon img.gif-img,
-.icon img.crackship-img {
+/* On cible uniquement les images qui sont dans des dossiers spécifiques */
+/* Cela évite de toucher aux avatars, même s'ils sont en format .gif */
+
+/* Pour les dossiers de Gifs */
+#gallery:has([data-name*="gifs"]) .icon img.gif-img,
+/* Pour les dossiers de Crackships */
+#gallery:has([data-name*="crackships"]) .icon img.crackship-img {
     width: 160px !important;
     height: 160px !important;
     object-fit: cover !important;
