@@ -1,6 +1,3 @@
-Voici votre code au propre avec le bloc pour afficher le texte de crédit dans les crackships déjà inséré exactement au bon endroit (dans la fonction loadFolder) :
-JavaScript
-
 const USER = "midnights-bloom";
 const REPO = "midnights.bloom-gallery";
 const ROOT = "Assets";
@@ -88,7 +85,6 @@ async function loadFolder(path){
 
     const folders = files.filter(f => f.type === "dir");
 
-    // Tri strict et propre pour les dossiers du plus récent au plus ancien
     folders.sort((a, b) => {
         const numA = parseInt((a.name.match(/\d+/) || [0])[0], 10);
         const numB = parseInt((b.name.match(/\d+/) || [0])[0], 10);
@@ -99,7 +95,6 @@ async function loadFolder(path){
         f => f.type === "file" && /\.(png|jpg|jpeg|webp|gif|svg)$/i.test(f.name)
     );
 
-    // Tri strict et propre pour les images
     images.sort((a, b) => {
         const numA = parseInt((a.name.match(/\d+/) || [0])[0], 10);
         const numB = parseInt((b.name.match(/\d+/) || [0])[0], 10);
@@ -126,7 +121,6 @@ async function loadFolder(path){
     const rootFolderName = parts[1] ? parts[1].toLowerCase() : "";
     const isAvatarsOrCrackships = parts.length === 2 && parts[0].toLowerCase() === "assets" && (rootFolderName === "avatars" || rootFolderName === "crackships");
 
-    // 1. Gestion de la recherche
     if (searchWrapper && searchInput) {
         if (isAvatarsOrCrackships) {
             searchWrapper.style.display = "block";
@@ -137,14 +131,13 @@ async function loadFolder(path){
         }
     }
 
-    // 2. Gestion des crédits pour la section Crackships
     const creditsElement = document.getElementById("crackshipCredits");
     if (creditsElement) {
         if (rootFolderName === "crackships") {
-            creditsElement.innerHTML = "All original gif resources belong to their respective creators and gif hunt makers. Colorings and edits by midnights.bloom.";
+            creditsElement.textContent = "All original gif resources belong to their respective creators and gif hunt makers. Colorings and edits by midnights.bloom.";
             creditsElement.style.display = "block";
         } else {
-            creditsElement.innerHTML = "";
+            creditsElement.textContent = "";
             creditsElement.style.display = "none";
         }
     }
