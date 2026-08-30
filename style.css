@@ -119,6 +119,7 @@ symb {
     text-align: center;
     opacity: 0.8;
     margin: 15px 0;
+    margin-bottom:10px;
 }
 
 .toolbar {
