@@ -120,16 +120,18 @@ async function loadFolder(path){
     const searchWrapper = document.getElementById('searchWrapper');
     const searchInput = document.getElementById('folderSearch');
     if (searchWrapper && searchInput) {
-        const parts = path.split("/");
-        const isExactAvatarsRoot = parts.length === 2 && parts[0].toLowerCase() === "assets" && parts[1].toLowerCase() === "avatars";
+       // NOUVEAU CODE (Avatars + Crackships) :
+const parts = path.split("/");
+const rootFolderName = parts[1] ? parts[1].toLowerCase() : "";
+const isAvatarsOrCrackships = parts.length === 2 && parts[0].toLowerCase() === "assets" && (rootFolderName === "avatars" || rootFolderName === "crackships");
 
-        if (isExactAvatarsRoot) {
-            searchWrapper.style.display = "block";
-            searchInput.value = "";
-            filterFolders(); // Réinitialise le filtre
-        } else {
-            searchWrapper.style.display = "none";
-        }
+if (isAvatarsOrCrackships) {
+    searchWrapper.style.display = "block";
+    searchInput.value = "";
+    filterFolders(); // Réinitialise le filtre
+} else {
+    searchWrapper.style.display = "none";
+}
     }
 }
 
