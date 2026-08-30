@@ -36,23 +36,6 @@ function showFolders(folders){
     `;
 
         card.onclick = () => {
-            if (folder.name.toLowerCase() === "crackships") {
-                let password = prompt("Ce dossier est privé. Entre le mot de passe :");
-                
-                if (!password) {
-                    return;
-                }
-
-                // Encodage propre pour comparer sans stocker le mot de passe en clair
-                const encodedInput = btoa(password.trim().toLowerCase());
-                const correctEncoded = "c3dpZnRpZXM="; // Le hash correspondant exactement au mot de passe "s*****es"//
-
-                if (encodedInput !== correctEncoded) {
-                    alert("Mot de passe incorrect !");
-                    return;
-                }
-            }
-
             history.push(currentPath);
             currentPath = folder.path;
             window.location.hash = folder.path;
