@@ -1,7 +1,10 @@
+Voici votre code au propre avec le bloc pour afficher le texte de crédit dans les crackships déjà inséré exactement au bon endroit (dans la fonction loadFolder) :
+JavaScript
+
 const USER = "midnights-bloom";
 const REPO = "midnights.bloom-gallery";
 const ROOT = "Assets";
- 
+
 const gallery = document.getElementById("gallery");
 const back = document.getElementById("back");
 
@@ -51,7 +54,7 @@ function showImages(images){
         const isAvatarFolder = currentPath.toLowerCase().includes('avatars');
         const isGif = image.name.toLowerCase().endsWith('.gif') && !isAvatarFolder;
         const isCrackship = currentPath.toLowerCase().includes('crackships');
-     
+      
         const card = document.createElement("div");
         card.className = "icon";
         card.innerHTML = `
@@ -116,22 +119,34 @@ async function loadFolder(path){
 
     updateBreadcrumb(path);
 
-    // Gestion de l'affichage du bloc de recherche (uniquement à la racine du dossier Avatars)
     const searchWrapper = document.getElementById('searchWrapper');
     const searchInput = document.getElementById('folderSearch');
-    if (searchWrapper && searchInput) {
-       // NOUVEAU CODE (Avatars + Crackships) :
-const parts = path.split("/");
-const rootFolderName = parts[1] ? parts[1].toLowerCase() : "";
-const isAvatarsOrCrackships = parts.length === 2 && parts[0].toLowerCase() === "assets" && (rootFolderName === "avatars" || rootFolderName === "crackships");
+    
+    const parts = path.split("/");
+    const rootFolderName = parts[1] ? parts[1].toLowerCase() : "";
+    const isAvatarsOrCrackships = parts.length === 2 && parts[0].toLowerCase() === "assets" && (rootFolderName === "avatars" || rootFolderName === "crackships");
 
-if (isAvatarsOrCrackships) {
-    searchWrapper.style.display = "block";
-    searchInput.value = "";
-    filterFolders(); // Réinitialise le filtre
-} else {
-    searchWrapper.style.display = "none";
-}
+    // 1. Gestion de la recherche
+    if (searchWrapper && searchInput) {
+        if (isAvatarsOrCrackships) {
+            searchWrapper.style.display = "block";
+            searchInput.value = "";
+            filterFolders(); 
+        } else {
+            searchWrapper.style.display = "none";
+        }
+    }
+
+    // 2. Gestion des crédits pour la section Crackships
+    const creditsElement = document.getElementById("crackshipCredits");
+    if (creditsElement) {
+        if (rootFolderName === "crackships") {
+            creditsElement.innerHTML = "All original gif resources belong to their respective creators and gif hunt makers. Colorings and edits by midnights.bloom.";
+            creditsElement.style.display = "block";
+        } else {
+            creditsElement.innerHTML = "";
+            creditsElement.style.display = "none";
+        }
     }
 }
 
@@ -220,17 +235,14 @@ function filterFolders() {
     const isCrackshipFolder = currentPath.toLowerCase().includes('crackships');
 
     folderCards.forEach(card => {
-        const name = card.getAttribute('data-name'); // ex: "casey & hilary" ou "michael b. jordan"
+        const name = card.getAttribute('data-name');
         
         let isMatch = false;
 
         if (isCrackshipFolder) {
-            // Dans Crackships : regarde si UN des mots/prénoms commence par la recherche
-            // Ex: "hilary" trouvera "Casey & Hilary" parce que le mot "Hilary" commence par "hilary"
             const words = name.split(/[\s&_]+/).filter(Boolean);
             isMatch = words.some(word => word.startsWith(input));
         } else {
-            // Dans Avatars : cherche strictement au début du nom complet
             isMatch = name.startsWith(input);
         }
 
