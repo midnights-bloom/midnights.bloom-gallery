@@ -215,20 +215,26 @@ function updateBreadcrumb(path){
 }
 
 function filterFolders() {
-    const input = document.getElementById('folderSearch').value.toLowerCase();
+    const input = document.getElementById('folderSearch').value.toLowerCase().trim();
     const folderCards = document.querySelectorAll('.folder');
-    
-    // Vérifie si on se trouve actuellement dans le dossier des crackships
     const isCrackshipFolder = currentPath.toLowerCase().includes('crackships');
 
     folderCards.forEach(card => {
-        const name = card.getAttribute('data-name');
+        const name = card.getAttribute('data-name'); // ex: "casey & hilary" ou "michael b. jordan"
         
-        // Si on est dans Crackships -> recherche n'importe où (.includes)
-        // Sinon (Avatars) -> recherche au début du nom (.startsWith)
-        const isMatch = isCrackshipFolder ? name.includes(input) : name.startsWith(input);
+        let isMatch = false;
 
-        if (isMatch) {
+        if (isCrackshipFolder) {
+            // Dans Crackships : regarde si UN des mots/prénoms commence par la recherche
+            // Ex: "hilary" trouvera "Casey & Hilary" parce que le mot "Hilary" commence par "hilary"
+            const words = name.split(/[\s&_]+/).filter(Boolean);
+            isMatch = words.some(word => word.startsWith(input));
+        } else {
+            // Dans Avatars : cherche strictement au début du nom complet
+            isMatch = name.startsWith(input);
+        }
+
+        if (input === "" || isMatch) {
             card.style.display = ""; 
         } else {
             card.style.display = "none"; 
