@@ -131,9 +131,12 @@ async function loadFolder(path){
         }
     }
 
-   const creditsElement = document.getElementById("crackshipCredits");
+  const creditsElement = document.getElementById("crackshipCredits");
     if (creditsElement) {
-        if (rootFolderName === "crackships") {
+        // On vérifie que le chemin s'arrête exactement au dossier "crackships"
+        const isExactlyCrackshipsRoot = path.toLowerCase().endsWith("/crackships") || path.toLowerCase() === "assets/crackships";
+
+        if (isExactlyCrackshipsRoot) {
             creditsElement.innerHTML = "Tous les gifs d'origine appartiennent à leurs créateurs respectifs et aux auteurs des gif hunts. Colorisations et éditions par midnights.bloom.<br>All original gif resources belong to their respective creators and gif hunt makers. Colorings and edits by midnights.bloom.";
             creditsElement.style.display = "block";
         } else {
