@@ -217,10 +217,18 @@ function updateBreadcrumb(path){
 function filterFolders() {
     const input = document.getElementById('folderSearch').value.toLowerCase();
     const folderCards = document.querySelectorAll('.folder');
+    
+    // Vérifie si on se trouve actuellement dans le dossier des crackships
+    const isCrackshipFolder = currentPath.toLowerCase().includes('crackships');
 
     folderCards.forEach(card => {
         const name = card.getAttribute('data-name');
-        if (name.startsWith(input)) {
+        
+        // Si on est dans Crackships -> recherche n'importe où (.includes)
+        // Sinon (Avatars) -> recherche au début du nom (.startsWith)
+        const isMatch = isCrackshipFolder ? name.includes(input) : name.startsWith(input);
+
+        if (isMatch) {
             card.style.display = ""; 
         } else {
             card.style.display = "none"; 
