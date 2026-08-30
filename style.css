@@ -113,6 +113,14 @@ symb {
     font-size: 20px;
 }
 
+.credits-crackships {
+    font-size: 11px;
+    font-style: italic;
+    text-align: center;
+    opacity: 0.8;
+    margin: 15px 0;
+}
+
 .toolbar {
     display: flex;
     flex-direction: row;
